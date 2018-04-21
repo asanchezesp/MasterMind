@@ -11,7 +11,7 @@ public class Tablero implements Dibujable2{
 		setModo(modo);
 	}
 	
-	public CombinacionRespuesta getResultado() {
+	public CombinacionRespuesta getCombinacion() {
 		return casillas;
 	}
 	

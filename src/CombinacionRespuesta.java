@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 public class CombinacionRespuesta extends Combinacion implements Dibujable {
 	private final char ROMBO = 9670;
@@ -7,9 +8,10 @@ public class CombinacionRespuesta extends Combinacion implements Dibujable {
 	public CombinacionRespuesta(int tamanio) {
 		super(tamanio);
 		respuestas = new String[tamanio];
+		Arrays.fill(respuestas, " ");
 	}
 	
-	public void setNumAcertados(int acertados, int acertados_posicion) {
+	public void setNumAcertados(int acertados_posicion, int acertados) {
 		this.acertados = acertados;
 		this.acertados_posicion = acertados_posicion;
 		setRespuesta();

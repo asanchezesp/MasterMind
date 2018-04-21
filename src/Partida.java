@@ -32,10 +32,10 @@ public class Partida {
 						System.out.println("\n\nIntroduzca la secuencia de colores usando los colores disponibles:\n");
 						((Usuario)jugador1).introducirCasillas();
 						// Comprobación de la combinación y la colocación de la respuesta (Lo hace la máquina)
-						jugador1.getTablero().setCombinacionLista(jugador1.getTablero().getResultado(), i);
+						jugador1.getTablero().setCombinacionLista(jugador1.getTablero().getCombinacion(), i);
 						jugador1.getTablero().dibujar(i);
 						
-						if(jugador1.getTablero().getResultado().getCeldas().equals(jugador1.getTablero().getcombSecreta()))
+						if(jugador1.getTablero().getCombinacion().getCeldas().equals(jugador1.getTablero().getcombSecreta()))
 							fin_partida = true;
 					}
 					

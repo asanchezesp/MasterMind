@@ -9,13 +9,13 @@ public class Usuario extends Jugador {
 	public void introducirCasillas() {
 		boolean resultado;
 		
-		for(int i=0; i<getTablero().getResultado().getCeldas().length;i++) {
+		for(int i=0; i<getTablero().getCombinacion().getCeldas().length;i++) {
 			resultado = false;
 				
 			while(!resultado) {
-				getTablero().getResultado().setCeldas(getColores().elegirColor(Teclado.cadena()), i);
+				getTablero().getCombinacion().setCeldas(getColores().elegirColor(Teclado.cadena()), i);
 			
-				if(getTablero().getResultado().getValorCelda(i).equals(null))
+				if(getTablero().getCombinacion().getValorCelda(i).equals(null))
 					System.out.println("Error, color no disponible, introduzca otro color: ");
 				else 
 					resultado = true;
