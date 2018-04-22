@@ -54,15 +54,15 @@ public final class Colores {
 				resultado = FONDO_CELESTE;
 			break;
 			
-			case "GREEN":
+			case "verde claro":
 				resultado = GREEN_BACKGROUND_BRIGHT;
 			break;
 			
-			case "BLUE":
+			case "celeste oscuro":
 				resultado = BLUE_BACKGROUND_BRIGHT;
 			break;
 			
-			case "CYAN":
+			case "turquesa":
 				resultado = CYAN_BACKGROUND_BRIGHT;
 			break;
 			

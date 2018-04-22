@@ -2,9 +2,11 @@
 public class Jugador {
 	private Tablero tablero;
 	private Colores color = new Colores();
-	//private ArrayList<CombinacionRespuesta> combinaciones_respuestas = new ArrayList<>(); 
+	private ModoJuego modo;
+	
 	public Jugador(ModoJuego modo) {
 		tablero = new Tablero(modo);
+		this.modo = modo;
 	}
 	
 	public Colores getColores() {
@@ -18,12 +20,6 @@ public class Jugador {
 	public boolean compararAcertados(int adivinados_pos, int adivinados) { // La primera variable será el nº de colores acertados en su posición correcta y la segunda solo los colores acertados
 		boolean resultado = true;
 		int rojos=0, blancos=0;
-		
-		/*for(int i=0; i< tablero.getCombinacion().getCeldas().length; i++)
-			if(tablero.getCombinacion().getValorCelda(i).equals(tablero.getcombSecreta().getValorCelda(i)))
-				rojos++;
-			else 
-				blancos++;*/
 		
 		for(int i=0; i< tablero.getCombinacion().getCeldas().length; i++)
 			for(int j=0; j<tablero.getCombinacion().getCeldas().length; j++)
@@ -41,6 +37,8 @@ public class Jugador {
 				
 		return resultado;
 	}
+	
+	
 	
 
 	
