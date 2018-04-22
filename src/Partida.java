@@ -25,20 +25,27 @@ public class Partida {
 			
 				if(jugadorModoFacil == 1) {
 					
-					jugador1.getColores();
-					//jugador1.setCombinacionSecreta(Función de la máquina que coloque la combinación);
+					//jugador1.getColores();
+					//La máquina introduce la combinación secreta
+					jugador1.getTablero().setCombinacionSecreta(((Maquina)jugador2).introducirCombSecreta());
+					//Enseño colores disponibles
 					Colores.ensenharColores(jugador1.getTablero().getNumColores());
+					//El usuario introduce los colores en la combinación
 					for(int i=1; i<=jugador1.getTablero().getIntentos() && !fin_partida ;i++) {
 						System.out.println("\n\nIntroduzca la secuencia de colores usando los colores disponibles:\n");
 						((Usuario)jugador1).introducirCasillas();
-						// Comprobación de la combinación y la colocación de la respuesta (Lo hace la máquina)
+						//Añadir Comprobación de la combinación y la colocación de la respuesta (Lo hace la máquina)
+						
+						//Añado la combinación a la lista de combinaciones
 						jugador1.getTablero().setCombinacionLista(jugador1.getTablero().getCombinacion(), i);
+						//Imprimo el tablero
 						jugador1.getTablero().dibujar(i);
 						
+						//Compruebo si el jugador a acertado la combinación
 						if(jugador1.getTablero().getCombinacion().getCeldas().equals(jugador1.getTablero().getcombSecreta()))
 							fin_partida = true;
 					}
-					
+					//Saco el mensaje de fin de partida con el ganador
 					if(fin_partida)
 						System.out.println(mensaje_fin + "1");
 					else 

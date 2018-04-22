@@ -19,12 +19,6 @@ public class Jugador {
 		boolean resultado = true;
 		int rojos=0, blancos=0;
 		
-		/*for(int i=0; i< tablero.getCombinacion().getCeldas().length; i++)
-			if(tablero.getCombinacion().getValorCelda(i).equals(tablero.getcombSecreta().getValorCelda(i)))
-				rojos++;
-			else 
-				blancos++;*/
-		
 		for(int i=0; i< tablero.getCombinacion().getCeldas().length; i++)
 			for(int j=0; j<tablero.getCombinacion().getCeldas().length; j++)
 				if(tablero.getCombinacion().getValorCelda(i).equals(tablero.getcombSecreta().getValorCelda(j)) && i==j)

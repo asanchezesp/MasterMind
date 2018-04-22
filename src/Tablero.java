@@ -50,7 +50,7 @@ public class Tablero implements Dibujable2{
 
 	}
 	
-	public boolean isRepetido() {
+	/*public boolean isRepetido() {
 		boolean resultado = false;
 		int i,j;
 		
@@ -63,7 +63,7 @@ public class Tablero implements Dibujable2{
 			}
 		}
 		return resultado;
-		}
+		}*/
 
 	public void dibujar(int intentos_restantes) {
 		
