@@ -1,4 +1,3 @@
-import java.util.HashMap;
 import java.util.Random;
 
 public class Maquina extends Jugador {
@@ -12,17 +11,11 @@ public class Maquina extends Jugador {
 		
 	}
 	
-<<<<<<< HEAD
-	public Combinacion introducirCombSecreta(){
-		Combinacion combinacion = new Combinacion(super.getTablero().getCombinacion().getCeldas().length);
-		//Crear ArrayList para mejorar la eficacia
-		// Hacer switch dependiendo del modo
-=======
-	public void introducirCombSecreta(Jugador jugador)
-	{
-		
+	public Combinacion introducirCombSecreta(Jugador jugador){
+	Combinacion combinacion = new Combinacion(super.getTablero().getCombinacion().getCeldas().length);
+	//Crear ArrayList para mejorar la eficacia
+	// Hacer switch dependiendo del modo
 
->>>>>>> Rama1
 		do {
 			for(int i=0; i<combinacion.getCeldas().length-1;i++) {
 				combinacion.setCeldas(colores[rnd.nextInt(combinacion.getCeldas().length)+1], i);
@@ -32,8 +25,7 @@ public class Maquina extends Jugador {
 		return combinacion;
 		
 	}
-	
-<<<<<<< HEAD
+
 	public boolean isRepetido(Combinacion casillas) {
 		boolean resultado = false;
 		int i,j;
@@ -49,9 +41,8 @@ public class Maquina extends Jugador {
 		}
 	
 	//Metodo para introducir la combinación secreta dependiendo del tipo de juego // Implementado modo fácil.
-=======
 	//Metodo para introducir la combinación secreta dependiendo del tipo de juego
->>>>>>> Rama1
+
 	//Metodo para introducir las repsuestas
 	
 	public void introducirRespuestas(Jugador jugador) {
