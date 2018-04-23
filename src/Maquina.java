@@ -11,7 +11,7 @@ public class Maquina extends Jugador {
 		
 	}
 	
-	public Combinacion introducirCombSecreta(Jugador jugador){
+	public Combinacion introducirCombSecreta(){
 	Combinacion combinacion = new Combinacion(super.getTablero().getCombinacion().getCeldas().length);
 	//Crear ArrayList para mejorar la eficacia
 	// Hacer switch dependiendo del modo
@@ -41,7 +41,6 @@ public class Maquina extends Jugador {
 		}
 	
 	//Metodo para introducir la combinación secreta dependiendo del tipo de juego // Implementado modo fácil.
-	//Metodo para introducir la combinación secreta dependiendo del tipo de juego
 
 	//Metodo para introducir las repsuestas
 	
