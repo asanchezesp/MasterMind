@@ -12,8 +12,8 @@ public class Maquina extends Jugador {
 		
 	}
 	
-	public Combinacion introducirCombSecreta(){
-		Combinacion combinacion = new Combinacion(super.getTablero().getCombinacion().getCeldas().length);
+	public void introducirCombSecreta(Jugador jugador)
+	{
 		
 
 		do {
@@ -26,21 +26,7 @@ public class Maquina extends Jugador {
 		
 	}
 	
-	public boolean isRepetido(Combinacion casillas) {
-		boolean resultado = false;
-		int i,j;
-		
-		while(!resultado) {
-			for(i=0; i<casillas.getCeldas().length-1 && !resultado;i++) {
-				for(j=0; j<casillas.getCeldas().length-1 && !resultado;j++)
-					if(casillas.getValorCelda(i).equals(casillas.getValorCelda(j)))
-						resultado = true;
-			}
-		}
-		return resultado;
-		}
-	
-	//Metodo para introducir la combinación secreta dependiendo del tipo de juego // Implementado modo fácil.
+	//Metodo para introducir la combinación secreta dependiendo del tipo de juego
 	//Metodo para introducir las repsuestas
 	
 	public void introducirRespuestas(Jugador jugador) {
