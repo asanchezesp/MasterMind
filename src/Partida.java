@@ -18,24 +18,25 @@ public class Partida {
 		
 		switch(opcion1) {
 			case FACIL:
-				jugadorModoFacil = (Teclado.boolMenu("Elija quien será el jugador: ", "Usuario", "Máquina")?1:2); //Si es 1 el jugador será el usuario, si no será la máquina
+				jugadorModoFacil = (Teclado.boolMenu("Elija quien será el jugador", "Usuario", "Máquina")?1:2); //Si es 1 el jugador será el usuario, si no será la máquina
 				modo = new ModoJuego(opcion1); // Inicializa valores para el modo fácil
 				jugador1 = new Usuario(modo);
 				jugador2 = new Maquina(modo);
 			
+				// Si es el usuario quien juega 
 				if(jugadorModoFacil == 1) {
 					
-					//jugador1.getColores();
-					//La máquina introduce la combinación secreta
+					//jugador1.getColores(); ¿?
+					//1.La máquina introduce la combinación secreta
 					jugador1.getTablero().setCombinacionSecreta(((Maquina)jugador2).introducirCombSecreta());
-					//Enseño colores disponibles
+					//2.Enseño colores disponibles
 					Colores.ensenharColores(jugador1.getTablero().getNumColores());
-					//El usuario introduce los colores en la combinación
+					//3.El usuario introduce los colores en la combinación
 					for(int i=1; i<=jugador1.getTablero().getIntentos() && !fin_partida ;i++) {
 						System.out.println("\n\nIntroduzca la secuencia de colores usando los colores disponibles:\n");
 						((Usuario)jugador1).introducirCasillas();
 						//Añadir Comprobación de la combinación y la colocación de la respuesta (Lo hace la máquina)
-						
+						((Maquina)jugador2).introducirRespuestas(jugador1);
 						//Añado la combinación a la lista de combinaciones
 						jugador1.getTablero().setCombinacionLista(jugador1.getTablero().getCombinacion(), i);
 						//Imprimo el tablero
