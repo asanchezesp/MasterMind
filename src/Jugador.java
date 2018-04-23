@@ -2,9 +2,11 @@
 public class Jugador {
 	private Tablero tablero;
 	private Colores color = new Colores();
-	//private ArrayList<CombinacionRespuesta> combinaciones_respuestas = new ArrayList<>(); 
+	private ModoJuego modo;
+	
 	public Jugador(ModoJuego modo) {
 		tablero = new Tablero(modo);
+		this.modo = modo;
 	}
 	
 	public Colores getColores() {
@@ -35,6 +37,8 @@ public class Jugador {
 				
 		return resultado;
 	}
+	
+	
 	
 
 	
