@@ -11,13 +11,16 @@ public class CombinacionRespuesta extends Combinacion implements Dibujable {
 		Arrays.fill(respuestas, " ");
 	}
 	
-	public void setNumAcertados(int acertados_posicion, int acertados) {
+	/*public void setNumAcertados(int acertados_posicion, int acertados) {
 		this.acertados = acertados;
 		this.acertados_posicion = acertados_posicion;
 		setRespuesta();
-	}
+	}*/
 	
-	public void setRespuesta() {
+	public void setRespuesta(int acertados_posicion, int acertados) {
+		this.acertados = acertados;
+		this.acertados_posicion = acertados_posicion;
+		
 		for(int i=0;i<acertados_posicion;i++)
 			respuestas[i] = String.format("%s", Colores.ROJO_ROMBO + ROMBO + Colores.RESET); // Acertados correctamente
 
@@ -33,6 +36,8 @@ public class CombinacionRespuesta extends Combinacion implements Dibujable {
 	@Override
 	public void dibujar() {
 		for(int i=0; i<2; i++) {
+			if(i==1)
+				System.out.print(" | ");
 			super.dibujar();
 			System.out.print("|");
 			if(i==0)

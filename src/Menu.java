@@ -12,13 +12,13 @@ public class Menu {
 		int opcion1, jugadorModoFacil;
 		boolean finalizar = false;
 		
-		while(!finalizar) {
+		do {
 			System.out.println(menu1);
 			opcion1 = Teclado.numeroEntreLimites(1, 3, Teclado.Limite.BOTH_IN, Teclado.TipoNumero.INT);
 			partidas.add(new Partida(opcion1));
 			partidas.get(partidas.size()-1).comenzarPartida();
 			finalizar = Teclado.boolMenu("¿Jugar de nuevo?", "Si", "Salir");
-		}
+		}while(finalizar);
 		
 		System.out.println("\nNúmero de partidas jugadas: " + partidas.size());
 	}

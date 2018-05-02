@@ -1,6 +1,6 @@
 
 public class ModoJuego {
-	Dificultad dificultad;
+	private Dificultad dificultad;
 	
 	public ModoJuego(int modo) {
 		switch (modo) {

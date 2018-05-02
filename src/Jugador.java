@@ -1,8 +1,9 @@
 
 public class Jugador {
 	private Tablero tablero;
-	private Colores color = new Colores();
-	private ModoJuego modo;
+	protected Colores color = new Colores();
+	protected ModoJuego modo;
+	protected String colores[] = {"negro","rojo","verde","amarillo","azul","morado","celeste","verde claro","celeste oscuro","turquesa"};
 	
 	public Jugador(ModoJuego modo) {
 		tablero = new Tablero(modo);
@@ -30,7 +31,7 @@ public class Jugador {
 						blancos++;
 		
 		if((rojos-blancos)==(adivinados_pos-adivinados))
-			tablero.getCombinacion().setNumAcertados(rojos, blancos);
+			tablero.getCombinacion().setRespuesta(rojos, blancos);
 		else 
 			resultado = false;
 			

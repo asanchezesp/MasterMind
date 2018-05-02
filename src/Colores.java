@@ -22,7 +22,7 @@ public final class Colores {
 
 	
 	public static String elegirColor(String eleccion) {
-		String resultado;
+		String resultado = null;
 		
 		switch (eleccion) {
 		
@@ -64,10 +64,6 @@ public final class Colores {
 			
 			case "turquesa":
 				resultado = CYAN_BACKGROUND_BRIGHT;
-			break;
-			
-			default:
-				resultado = null;
 			break;
 			
 		}
