@@ -9,7 +9,7 @@ public class Menu {
 		ArrayList<Partida> partidas = new ArrayList<>();
 		final int FACIL=1, MEDIO=2, DIFICIL=3, SALIR = -1;
 		String menu1 = "Bienvenido a Master Mind\nPor favor, eliga un modo de juego: \n\t1.- Fácil\n\t2.- Medio\n\t3.- Difícil";
-		int opcion1, jugadorModoFacil;
+		int opcion1;
 		boolean finalizar = false;
 		
 		do {

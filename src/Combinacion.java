@@ -1,4 +1,4 @@
-import Teclado.Teclado; 
+
 
 public class Combinacion implements Dibujable{
 	private Casilla celdas[];
@@ -15,7 +15,7 @@ public class Combinacion implements Dibujable{
 		return celdas[posicion];
 	}
 	
-	public void setCeldas(String valor,int posicion) {
+	public void colocarCeldas(String valor,int posicion) {
 		celdas[posicion] = new Casilla(valor);
 	}
 
