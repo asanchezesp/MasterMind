@@ -7,31 +7,17 @@ public class Usuario extends Jugador {
 	}
 	
 	public void introducirCasillas() {
-		boolean resultado;
+		int eleccion;
 		
 		for(int i=0; i<getTablero().getCombinacion().getCeldas().length;i++) {
-			resultado = false;
-				
-			while(!resultado) {
-				getTablero().getCombinacion().setCeldas(getColores().elegirColor(Teclado.cadena()), i);
-			
-				if(getTablero().getCombinacion().getValorCelda(i).equals(null))
-					System.out.println("Error, color no disponible, introduzca otro color: ");
-				else 
-					resultado = true;
-				}
-			}
-		
+
+			eleccion = Teclado.numeroEntreLimites(1, 8, Teclado.Limite.BOTH_IN, Teclado.TipoNumero.INT);
+			super.getTablero().getCombinacion().setCeldas(Colores.elegirColor(colores[eleccion]), i);
+	
+		}
+	}	
 	//Metodo para introducir los aciertos
 	// Metodo para introducir la combinación secreta
 	
 	
-	
-	}
-	
-	
-	
-	
-	
-
 }

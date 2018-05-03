@@ -272,7 +272,7 @@ public class Teclado {
 				
 				}
 				if(!dentro) {
-					System.out.println("Error, el valor no está dentro del rango\nIntroduzca otro valor: ");
+					System.out.println("Error, el color seleccionado no está disponible\nIntroduzca otro valor: ");
 				}
 			
 		}while(!dentro);

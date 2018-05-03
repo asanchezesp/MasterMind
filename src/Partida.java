@@ -29,22 +29,24 @@ public class Partida {
 					//jugador1.getColores(); ¿?
 					//1.La máquina introduce la combinación secreta
 					jugador1.getTablero().setCombinacionSecreta(((Maquina)jugador2).introducirCombSecreta());
-					//2.Enseño colores disponibles
-					Colores.ensenharColores(jugador1.getTablero().getNumColores());
-					//3.El usuario introduce los colores en la combinación
+
 					for(int i=1; i<=jugador1.getTablero().getIntentos() && !fin_partida ;i++) {
-						System.out.println("\n\nIntroduzca la secuencia de colores usando los colores disponibles:\n");
+						//2.Enseño colores disponibles
+						Colores.ensenharColores(jugador1.getTablero().getNumColores());
+						//3.El usuario introduce los colores en la combinación
+						System.out.println("\n\nIntroduzca la secuencia de colores usando los colores disponibles:");
 						((Usuario)jugador1).introducirCasillas();
-						//Añadir Comprobación de la combinación y la colocación de la respuesta (Lo hace la máquina)
+						//4.La máquina comprueba los colores acertados y coloca las respuestas
 						((Maquina)jugador2).introducirRespuestas(jugador1);
 						//Añado la combinación a la lista de combinaciones
-						jugador1.getTablero().setCombinacionLista(jugador1.getTablero().getCombinacion(), i);
+						jugador1.getTablero().colocarCombinacionLista(jugador1.getTablero().getCombinacion(), i-1);
 						//Imprimo el tablero
 						jugador1.getTablero().dibujar(i);
 						
 						//Compruebo si el jugador a acertado la combinación
 						if(jugador1.getTablero().getCombinacion().getCeldas().equals(jugador1.getTablero().getcombSecreta()))
 							fin_partida = true;
+						System.out.println();
 					}
 					//Saco el mensaje de fin de partida con el ganador
 					if(fin_partida)
