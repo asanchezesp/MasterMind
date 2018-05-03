@@ -1,4 +1,4 @@
-import Teclado.Teclado; 
+
 
 public class Combinacion implements Dibujable{
 	private Casilla celdas[];
@@ -15,7 +15,7 @@ public class Combinacion implements Dibujable{
 		return celdas[posicion];
 	}
 	
-	public void setCeldas(String valor,int posicion) {
+	public void colocarCeldas(String valor,int posicion) {
 		celdas[posicion] = new Casilla(valor);
 	}
 
@@ -24,6 +24,14 @@ public class Combinacion implements Dibujable{
 		
 		for(int i=0;i<celdas.length;i++)
 			System.out.printf("%s    %s ",celdas[i], Colores.RESET);
+	}
+	
+	public boolean equals(Object obj) {
+		boolean resultado = false;
+		if(obj instanceof Combinacion && celdas.equals(((Combinacion)obj).celdas))
+			resultado = true;
+		
+			return resultado;
 	}
 
 

@@ -37,7 +37,7 @@ public class CombinacionRespuesta extends Combinacion implements Dibujable {
 	public void dibujar() {
 		for(int i=0; i<2; i++) {
 			if(i==1)
-				System.out.print(" | ");
+				System.out.print("  | ");
 			super.dibujar();
 			System.out.print("|");
 			if(i==0)

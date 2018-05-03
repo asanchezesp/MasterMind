@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Tablero implements Dibujable2{
+	private ModoJuego modo;
 	private ArrayList<CombinacionRespuesta> combinaciones_respuestas = new ArrayList<>(); 
 	private int numIntentos, numColores;
 	private boolean repeticion;
@@ -8,6 +9,7 @@ public class Tablero implements Dibujable2{
 	private Combinacion combSecreta;
 	
 	public Tablero(ModoJuego modo) {
+		this.modo = modo;
 		setModo(modo);
 	}
 	
@@ -31,14 +33,18 @@ public class Tablero implements Dibujable2{
 		this.combSecreta = combSecreta;
 	}
 	
-	public void colocarCombinacionLista(CombinacionRespuesta combinacion,int posicion) {
+	public void colocarCombinacionLista(CombinacionRespuesta combinacion) {
 
-		//combinaciones_respuestas.add(combinacion);
-		combinaciones_respuestas.add(posicion, combinacion);
+		combinaciones_respuestas.add(combinacion);
+
 	}
 	
 	public ArrayList<CombinacionRespuesta> getCombinaciones(){
 		return combinaciones_respuestas;
+	}
+	
+	public void nuevaCombinacion() {
+		casillas = new CombinacionRespuesta(modo.getDificultad().getNumCasillas());
 	}
 	
 	public void setModo(ModoJuego modo) {
@@ -55,10 +61,13 @@ public class Tablero implements Dibujable2{
 		
 		for(int i=combinaciones_respuestas.size()-1; i>=0;i--) {
 			System.out.println();
-			System.out.print(i+1 + "| ");
+			if(i+1==10)
+				System.out.print(i+1 + "| ");
+			else
+				System.out.print(i+1 + " | ");
 			combinaciones_respuestas.get(i).dibujar();
 			if(i==0)
-				System.out.print("Intentos restantes: " + (numIntentos-intentos_restantes) + "\n\n");
+				System.out.print("Intentos restantes: " + (numIntentos-intentos_restantes) + "\n");
 		}
 	}
 	

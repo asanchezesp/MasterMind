@@ -4,7 +4,6 @@ import java.util.Random;
 
 public class Maquina extends Jugador {
 	
-	//private HashMap<Combinacion,Integer> combinaciones = new HashMap<>(); // La clave es la combinación y el valor la respuesta
 	private Random rnd = new Random();
 
 	public Maquina(ModoJuego modo) {
@@ -21,7 +20,7 @@ public class Maquina extends Jugador {
 	//Modo fácil
 	for(int i=0; i<combinacion.getCeldas().length;i++) {
 		posicion = rnd.nextInt(colores_disp.size());
-		combinacion.setCeldas(Colores.elegirColor(colores_disp.get(posicion)), i);
+		combinacion.colocarCeldas(Colores.elegirColor(colores_disp.get(posicion)), i);
 		//Colores.elegirColor(colores[eleccion]), i
 		colores_disp.remove(posicion);
 		}

@@ -26,7 +26,6 @@ public class Partida {
 				// Si es el usuario quien juega 
 				if(jugadorModoFacil == 1) {
 					
-					//jugador1.getColores(); ¿?
 					//1.La máquina introduce la combinación secreta
 					jugador1.getTablero().setCombinacionSecreta(((Maquina)jugador2).introducirCombSecreta());
 
@@ -34,16 +33,17 @@ public class Partida {
 						//2.Enseño colores disponibles
 						Colores.ensenharColores(jugador1.getTablero().getNumColores());
 						//3.El usuario introduce los colores en la combinación
-						System.out.println("\n\nIntroduzca la secuencia de colores usando los colores disponibles:");
+						System.out.println("\n\nIntroduzca la secuencia de colores usando los colores disponibles usando los números ");
+						jugador1.getTablero().nuevaCombinacion();
 						((Usuario)jugador1).introducirCasillas();
 						//4.La máquina comprueba los colores acertados y coloca las respuestas
 						((Maquina)jugador2).introducirRespuestas(jugador1);
-						//Añado la combinación a la lista de combinaciones
-						jugador1.getTablero().colocarCombinacionLista(jugador1.getTablero().getCombinacion(), i-1);
-						//Imprimo el tablero
+						//5.Añado la combinación a la lista de combinaciones
+						jugador1.getTablero().colocarCombinacionLista(jugador1.getTablero().getCombinacion());
+						//6.Imprimo el tablero
 						jugador1.getTablero().dibujar(i);
 						
-						//Compruebo si el jugador a acertado la combinación
+						//7.Compruebo si el jugador a acertado la combinación
 						if(jugador1.getTablero().getCombinacion().getCeldas().equals(jugador1.getTablero().getcombSecreta()))
 							fin_partida = true;
 						System.out.println();

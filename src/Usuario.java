@@ -11,8 +11,8 @@ public class Usuario extends Jugador {
 		
 		for(int i=0; i<getTablero().getCombinacion().getCeldas().length;i++) {
 
-			eleccion = Teclado.numeroEntreLimites(1, 8, Teclado.Limite.BOTH_IN, Teclado.TipoNumero.INT);
-			super.getTablero().getCombinacion().setCeldas(Colores.elegirColor(colores[eleccion]), i);
+			eleccion = Teclado.numeroEntreLimites(1, 8, Teclado.Limite.BOTH_IN, Teclado.TipoNumero.INT)-1;
+			super.getTablero().getCombinacion().colocarCeldas(Colores.elegirColor(colores[eleccion]), i);
 	
 		}
 	}	
