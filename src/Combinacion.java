@@ -25,14 +25,5 @@ public class Combinacion implements Dibujable{
 		for(int i=0;i<celdas.length;i++)
 			System.out.printf("%s    %s ",celdas[i], Colores.RESET);
 	}
-	
-	public boolean equals(Object obj) {
-		boolean resultado = false;
-		if(obj instanceof Combinacion && celdas.equals(((Combinacion)obj).celdas))
-			resultado = true;
-		
-			return resultado;
-	}
-
 
 }

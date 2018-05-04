@@ -19,7 +19,7 @@ public class Maquina extends Jugador {
 
 	//Modo fácil
 	for(int i=0; i<combinacion.getCeldas().length;i++) {
-		posicion = rnd.nextInt(colores_disp.size());
+		posicion = rnd.nextInt(combinacion.getCeldas().length) +1;
 		combinacion.colocarCeldas(Colores.elegirColor(colores_disp.get(posicion)), i);
 		//Colores.elegirColor(colores[eleccion]), i
 		colores_disp.remove(posicion);

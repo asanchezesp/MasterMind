@@ -44,15 +44,19 @@ public class Partida {
 						jugador1.getTablero().dibujar(i);
 						
 						//7.Compruebo si el jugador a acertado la combinación
-						if(jugador1.getTablero().getCombinacion().getCeldas().equals(jugador1.getTablero().getcombSecreta()))
+						if(jugador1.getTablero().compararCombinaciones())
 							fin_partida = true;
 						System.out.println();
 					}
 					//Saco el mensaje de fin de partida con el ganador
 					if(fin_partida)
 						System.out.println(mensaje_fin + "1");
-					else 
+					else {
 						System.out.println(mensaje_fin + "2");
+						System.out.println("La combinación secreta era:");
+						jugador1.getTablero().getcombSecreta().dibujar();
+						System.out.println("\n");
+					}
 				}
 				break;
 		

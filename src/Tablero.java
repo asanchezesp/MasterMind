@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Tablero implements Dibujable2{
 	private ModoJuego modo;
@@ -7,6 +8,7 @@ public class Tablero implements Dibujable2{
 	private boolean repeticion;
 	private CombinacionRespuesta casillas;
 	private Combinacion combSecreta;
+	private Casilla[] celdas;
 	
 	public Tablero(ModoJuego modo) {
 		this.modo = modo;
@@ -45,6 +47,12 @@ public class Tablero implements Dibujable2{
 	
 	public void nuevaCombinacion() {
 		casillas = new CombinacionRespuesta(modo.getDificultad().getNumCasillas());
+	}
+	
+	public boolean compararCombinaciones() {
+		Casilla combinacionUsuario[] = casillas.getCeldas();
+		Casilla combinacionSecreta[] = combSecreta.getCeldas();
+		return Arrays.equals(combinacionUsuario, combinacionSecreta);
 	}
 	
 	public void setModo(ModoJuego modo) {
