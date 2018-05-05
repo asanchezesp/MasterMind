@@ -19,12 +19,18 @@ public class Tablero implements Dibujable2{
 		return casillas;
 	}
 	
+
+	
 	public int getIntentos() {
 		return numIntentos;
 	}	
 	
 	public Combinacion getcombSecreta() {
 		return combSecreta;
+	}
+	
+	public boolean isRepeticion() {
+		return repeticion;
 	}
 	
 	public int getNumColores() {
@@ -73,7 +79,7 @@ public class Tablero implements Dibujable2{
 				System.out.print(i+1 + "| ");
 			else
 				System.out.print(i+1 + " | ");
-			combinaciones_respuestas.get(i).dibujar();
+			combinaciones_respuestas.get(i).dibujarRespuesta();
 			if(i==0)
 				System.out.print("Intentos restantes: " + (numIntentos-intentos_restantes) + "\n");
 		}

@@ -21,7 +21,6 @@ public class Maquina extends Jugador {
 	for(int i=0; i<combinacion.getCeldas().length;i++) {
 		posicion = rnd.nextInt(combinacion.getCeldas().length) +1;
 		combinacion.colocarCeldas(Colores.elegirColor(colores_disp.get(posicion)), i);
-		//Colores.elegirColor(colores[eleccion]), i
 		colores_disp.remove(posicion);
 		}
 
@@ -29,22 +28,27 @@ public class Maquina extends Jugador {
 		return combinacion;
 		
 	}
-
-	public boolean isRepetido(Combinacion casillas) {
-		boolean resultado = false;
-		int i,j;
-		
-		while(!resultado) {
-			for(i=0; i<casillas.getCeldas().length-1 && !resultado;i++) {
-				for(j=0; j<casillas.getCeldas().length-1 && !resultado;j++)
-					if(casillas.getValorCelda(i).equals(casillas.getValorCelda(j)))
-						resultado = true;
-			}
-		}
-		return resultado;
-		}
 	
 	//Metodo para introducir la combinación secreta dependiendo del tipo de juego // Implementado modo fácil.
+	
+	public void introducirCombinacion() {
+		ArrayList<String> colores_disp = new ArrayList<>(Arrays. asList(colores));
+		int eleccion, longitud = getTablero().getCombinacion().getCeldas().length;
+		
+		if(!getTablero().isRepeticion()) {
+			for(int i=0; i<longitud;i++) {
+				eleccion = rnd.nextInt(longitud) +1;
+				getTablero().getCombinacion().colocarCeldas(Colores.elegirColor(colores_disp.get(eleccion)), i);
+				colores_disp.remove(eleccion);
+			}
+		}
+		else {
+			for(int i=0; i<longitud;i++) {
+				eleccion = rnd.nextInt(longitud) +1;
+				getTablero().getCombinacion().colocarCeldas(colores_disp.get(eleccion), i);
+			}
+		}
+	}
 
 	//Metodo para introducir las repsuestas
 	

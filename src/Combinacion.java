@@ -1,6 +1,6 @@
 
 
-public class Combinacion implements Dibujable{
+public class Combinacion{
 	private Casilla celdas[];
 	
 	public Combinacion(int tamanio) {
@@ -19,11 +19,11 @@ public class Combinacion implements Dibujable{
 		celdas[posicion] = new Casilla(valor);
 	}
 
-	@Override
-	public void dibujar() {
+/*	@Override
+	public void dibujarRespuesta() {
 		
 		for(int i=0;i<celdas.length;i++)
 			System.out.printf("%s    %s ",celdas[i], Colores.RESET);
-	}
+	}*/
 
 }

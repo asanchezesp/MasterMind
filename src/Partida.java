@@ -53,9 +53,36 @@ public class Partida {
 						System.out.println(mensaje_fin + "1");
 					else {
 						System.out.println(mensaje_fin + "2");
-						System.out.println("La combinación secreta era:");
-						jugador1.getTablero().getcombSecreta().dibujar();
-						System.out.println("\n");
+					}
+				}
+				else { // Si es la máquina quien juega: 
+					
+					//1.Enseño los colores disponibles
+					Colores.ensenharColores(jugador1.getTablero().getNumColores());
+					System.out.println("Introduzca la combinación secreta para la máquina elegiendo entre los colores disponibles usando los números del 1 al 8:");
+					
+					for(int i=1; i<=jugador1.getTablero().getIntentos() && !fin_partida ;i++) {
+						//2.Pido la combinacion secreta al jugador y la introduzco en el tablero de la máquina
+						((Usuario)jugador1).introducirCombSecreta(jugador2);
+						//3. La máquina genera una combinación
+						jugador2.getTablero().nuevaCombinacion();
+						((Maquina)jugador2).introducirCombinacion();
+						//4. Muestro la combinación de la máquina al usuario y le pregunto cuantos ha acertado correctamente y los que ha acertado fallando la posición
+						System.out.println("La combinación de la máquina es:");
+						jugador2.getTablero().getCombinacion().dibujar();
+						((Usuario)jugador1).introducirRespuesta(jugador2);
+						//5. Añado la combinación a la lista y muestro el tablero
+						jugador2.getTablero().colocarCombinacionLista(jugador2.getTablero().getCombinacion());
+						jugador2.getTablero().dibujar(i);
+						System.out.println();
+						//6. Compruebo si ha acertado correctamente la combinación
+						if(jugador2.getTablero().compararCombinaciones())
+							fin_partida = true;
+					}
+					if(fin_partida)
+						System.out.println(mensaje_fin + "2");
+					else {
+						System.out.println(mensaje_fin + "1");
 					}
 				}
 				break;
@@ -65,6 +92,7 @@ public class Partida {
 }
 
 }
+
 
 
 }

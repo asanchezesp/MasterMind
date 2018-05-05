@@ -24,8 +24,8 @@ public class CombinacionRespuesta extends Combinacion implements Dibujable {
 		for(int i=0;i<acertados_posicion;i++)
 			respuestas[i] = String.format("%s", Colores.ROJO_ROMBO + ROMBO + Colores.RESET); // Acertados correctamente
 
-		for(int i=acertados_posicion;i<acertados;i++)
-			respuestas[i] = String.format("%s", Colores.CELESTE_ROMBO + ROMBO + Colores.RESET); //Solo colores acertados
+		for(int i=0;i<acertados;i++)
+			respuestas[acertados_posicion+i] = String.format("%s", Colores.CELESTE_ROMBO + ROMBO + Colores.RESET); //Solo colores acertados
 
 	}
 	
@@ -35,10 +35,17 @@ public class CombinacionRespuesta extends Combinacion implements Dibujable {
 
 	@Override
 	public void dibujar() {
+		
+		for(int i=0;i<getCeldas().length;i++)
+			System.out.printf("%s    %s ",getValorCelda(i), Colores.RESET);
+		
+	}
+	
+	public void dibujarRespuesta() {
 		for(int i=0; i<2; i++) {
 			if(i==1)
 				System.out.print("  | ");
-			super.dibujar();
+			dibujar();
 			System.out.print("|");
 			if(i==0)
 				for(int j = 0; j<respuestas.length/2; j++)

@@ -19,16 +19,18 @@ public class Jugador {
 	}
 	
 	public boolean compararAcertados(int adivinados_pos, int adivinados) { // La primera variable será el nº de colores acertados en su posición correcta y la segunda solo los colores acertados
-		boolean resultado = true;
+		boolean resultado = true, comparacion;
 		int rojos=0, blancos=0;
 		
 		for(int i=0; i< tablero.getCombinacion().getCeldas().length; i++)
-			for(int j=0; j<tablero.getCombinacion().getCeldas().length; j++)
-				if(tablero.getCombinacion().getValorCelda(i).equals(tablero.getcombSecreta().getValorCelda(j)) && i==j)
+			for(int j=0; j<tablero.getCombinacion().getCeldas().length; j++) {
+				comparacion = getTablero().getcombSecreta().getValorCelda(i).equals(getTablero().getCombinacion().getValorCelda(j));
+				if(comparacion && i==j)
 					rojos++;
 				else
-					if(tablero.getCombinacion().getValorCelda(j).equals(tablero.getcombSecreta().getValorCelda(j)))
+					if(comparacion)
 						blancos++;
+			}
 		
 		if((rojos-blancos)==(adivinados_pos-adivinados))
 			tablero.getCombinacion().setRespuesta(rojos, blancos);
@@ -36,6 +38,18 @@ public class Jugador {
 			resultado = false;
 			
 				
+		return resultado;
+	}
+	
+	public boolean isRepetido(Combinacion casillas) {
+		boolean resultado = false;
+		int i,j;
+		
+		for(i=0; i<casillas.getCeldas().length-1 && !resultado;i++) 
+			for(j=i+1; j<casillas.getCeldas().length-1 && !resultado;j++)
+				if(casillas.getValorCelda(i).equals(casillas.getValorCelda(j)))
+					resultado = true;
+		
 		return resultado;
 	}
 	
