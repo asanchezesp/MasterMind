@@ -1,3 +1,5 @@
+package MasterMind;
+
 import java.util.Arrays;
 
 /**

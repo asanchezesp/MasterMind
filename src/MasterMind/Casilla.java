@@ -1,3 +1,5 @@
+package MasterMind;
+
 /**
  *  Esta clase almacenará el color introducido por el jugador
  * @author Alejandro sánchez

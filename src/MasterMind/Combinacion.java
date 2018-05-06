@@ -1,3 +1,5 @@
+package MasterMind;
+
 /**
  * Esta clase almacena las combinaciones que serán introducidas por el jugador
  * @author Alejandro Sánchez

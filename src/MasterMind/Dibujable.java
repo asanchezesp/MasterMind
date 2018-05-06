@@ -1,3 +1,5 @@
+package MasterMind;
+
 /**
  * Interfaz que será usada por la combinación para ser dibujada
  * @author Alejandro Sánchez

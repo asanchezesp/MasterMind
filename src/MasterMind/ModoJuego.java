@@ -1,3 +1,5 @@
+package MasterMind;
+
 /**
  * Esta clase genera el modo de juego dependiendo de la elección del usuario
  * @author Alejandro Sánchez

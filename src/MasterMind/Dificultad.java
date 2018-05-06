@@ -1,3 +1,5 @@
+package MasterMind;
+
 /**
  * Enum que guarda los valores dependiendo del modo de juego que elija el usuario
  * @see ModoJuego

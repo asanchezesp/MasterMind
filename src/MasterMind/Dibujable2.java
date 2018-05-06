@@ -1,3 +1,5 @@
+package MasterMind;
+
 /**
  * Interfaz usada para dibujar el tablero
  * @author Alejandro Sánchez

@@ -1,3 +1,5 @@
+package MasterMind;
+
 import Teclado.Teclado;
 
 /**

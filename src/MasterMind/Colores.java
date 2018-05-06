@@ -1,3 +1,5 @@
+package MasterMind;
+
 /**
  * 
  * Esta clase almacena los colores disponibles	 
