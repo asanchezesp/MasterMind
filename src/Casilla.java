@@ -1,6 +1,12 @@
-
+/**
+ *  Esta clase almacenará el color introducido por el jugador
+ * @author Alejandro sánchez
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class Casilla {
-	
+
 	private String color;
 	
 	public Casilla(String color) {

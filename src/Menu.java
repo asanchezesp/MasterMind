@@ -20,6 +20,7 @@ public class Menu {
 			finalizar = Teclado.boolMenu("¿Jugar de nuevo?", "Si", "Salir");
 		}while(finalizar);
 		
+		Teclado.Close();
 		System.out.println("\nNúmero de partidas jugadas: " + partidas.size());
 	}
 

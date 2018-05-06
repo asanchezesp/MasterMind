@@ -2,15 +2,36 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * Esta clase almacena los métodos usados por el jugador en caso de que sea una máquina la que juegue
+ * @author Alejandro Sánchez
+ * @since 1.0
+ * @see Jugador
+ *
+ */
 public class Maquina extends Jugador {
-	
+	 /**
+	  * Generación de números aleatorios para introducir las combinaciones
+	  */
 	private Random rnd = new Random();
-
+	
+	/**
+	 * Llama al constructor del padre con el modo de juego introducido por parámetro
+	 * @see Jugador#Jugador(ModoJuego)
+	 * @param modo mModo de juego generado dependiendo de la elección del usuario
+	 * @see ModoJuego
+	 */
 	public Maquina(ModoJuego modo) {
 		super(modo);
 		
 	}
 	
+	/**
+	 * Dependiendo de la dificultad seleccionada, la máquina generará una combinación secreta, la cual deberá de adivinar el otro jugador
+	 * @return La combinación secreta que será introducida al otro jugador
+	 * @see Dificultad
+	 * @see Colores
+	 */
 	public Combinacion introducirCombSecreta(){
 	Combinacion combinacion = new Combinacion(super.getTablero().getCombinacion().getCeldas().length);
 	ArrayList<String> colores_disp = new ArrayList<>(Arrays. asList(colores));
@@ -40,6 +61,13 @@ public class Maquina extends Jugador {
 	
 	//Metodo para introducir la combinación secreta dependiendo del tipo de juego // Implementado modo fácil.
 	
+	/**
+	 * Dependiendo de si el modo de juego deja repetir colores o no, la máquina generará una combinación para intentar adivinar su combinación secreta
+	 * asignada
+	 * @see Tablero#isRepeticion()
+	 * @see Combinacion#colocarCeldas(String, int)
+	 * @see Colores
+	 */
 	public void introducirCombinacion() {
 		ArrayList<String> colores_disp = new ArrayList<>(Arrays. asList(colores));
 		int eleccion, longitud = getTablero().getCombinacion().getCeldas().length;
@@ -60,6 +88,13 @@ public class Maquina extends Jugador {
 
 	//Metodo para introducir las repsuestas
 	
+	/**
+	 * La máquina, dependiendo de la dificultad asignada, comprobará cuantos colores ha acertado el otro jugador de su combinación secreta e introducirá su respuesta
+	 * @param jugador Jugador al que será comprobado su combinación dada
+	 * @see Dificultad
+	 * @see Tablero #getcombSecreta()
+	 * @see CombinacionRespuesta#introducirRespuesta(int, int)
+	 */
 	public void introducirRespuestas(Jugador jugador) {
 		int rojos=0, blancos=0, longitud = super.getTablero().getCombinacion().getCeldas().length, contador = getTablero().getcombSecreta().getCeldas().length;
 		boolean comparacion,color_dificil;
@@ -102,7 +137,7 @@ public class Maquina extends Jugador {
 			break;
 		}
 		
-		jugador.getTablero().getCombinacion().setRespuesta(rojos, blancos);
+		jugador.getTablero().getCombinacion().introducirRespuesta(rojos, blancos);
 	}
 	//Metodo para intentar adivinar la combinación secreta dependiendo del tipo de juego
 	

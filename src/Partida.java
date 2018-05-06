@@ -1,17 +1,41 @@
 import Teclado.Teclado;
 
+/**
+ * Esta clase, será la responsable de llamar a los métodos necesarios para la partida dependiendo del modo de juego
+ * @author Alejandro Sánchez
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class Partida {
 	
+	/**
+	 * Tipo de modo de juego que será elegido por el usuario
+	 */
 	final int FACIL=1, MEDIO=2, DIFICIL=3;
+	/**
+	 * Modo de juego genaro por la elección del usuario
+	 */
 	private ModoJuego modo;
 	int opcion, jugadorModoFacil, contador_dificil=0;
+	/**
+	 * Jugadores que jugarán la partida. Dependiendo del modo de juego serán usuario o máquina
+	 * @see Usuario
+	 * @see Maquina
+	 */
 	private Jugador jugador1, jugador2;
 	
-	
+	/**
+	 * Genera la partida con la opción del usuario
+	 * @param opcion Opcion de modo de juego que será pedida al usuario
+	 */
 	public Partida(int opcion) {
 		this.opcion = opcion;
 	}
 	
+	/**
+	 * Comienza la partida dependiendo del modo de juego introducido y no se terminará hasta que uno de los jugadores gane
+	 */
 	public void comenzarPartida() {
 		boolean fin_partida = false;
 		String mensaje_fin = "Fin de la partida, el ganador es el jugador ";

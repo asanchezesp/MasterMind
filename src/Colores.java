@@ -1,6 +1,14 @@
-
+/**
+ * 
+ * Esta clase almacena los colores disponibles	 
+ * @author Alejandro Sánchez
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 
 public final class Colores {
+
 
 	public static final String RESET = "\u001B[0m";
 	
@@ -20,7 +28,11 @@ public final class Colores {
 
 	private static String colores[] = {FONDO_NEGRO, FONDO_ROJO, FONDO_VERDE, FONDO_AMARILLO, FONDO_AZUL, FONDO_MORADO, FONDO_CELESTE, GREEN_BACKGROUND_BRIGHT, BLUE_BACKGROUND_BRIGHT, CYAN_BACKGROUND_BRIGHT};
 
-	
+	/**
+	 * 
+	 * @param eleccion Color que ha elegido el usuario
+	 * @return El color que ha elegido el usuario, dependiendo de su elección
+	 */
 	public static String elegirColor(String eleccion) {
 		String resultado = null;
 		
@@ -70,6 +82,10 @@ public final class Colores {
 			return resultado;
 		}
 	
+	/**
+	 * Enseña los colores disponibles, dependiendo del número de colores que se vayan a usar en la partida
+	 * @param tamanio Cantidad de colores que serán usados para la partida
+	 */
 	public static void ensenharColores(int tamanio) {
 		for(int i=0; i<tamanio/2;i++) 
 			System.out.print(String.format("%s  ", colores[i])+RESET+ "  ");

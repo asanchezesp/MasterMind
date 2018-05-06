@@ -1,11 +1,30 @@
 import Teclado.Teclado;
 
+/**
+ * Esta clase almacena los métodos usados por el jugador en caso de que sea un usuario el que juegue
+ * @author Alejandro Sánchez
+ * @version 1.0
+ * @since 1.0
+ * @see Jugador
+ *
+ */
+
 public class Usuario extends Jugador {
 
+	/** 
+	 * Llama al constructor del padre con el modo de juego introducido por parámetro
+	 * @see Jugador#Jugador(ModoJuego)
+	 * @see ModoJuego
+	 * @param modo Modo de juego desde el que se iniciará 
+	 */
 	public Usuario(ModoJuego modo) {
 		super(modo);
 	}
 	
+	/**
+	 * Pide al usuario que introduzca entre los colores disponibles los que desee en la combinación 
+	 * @see Colores
+	 */
 	public void introducirCasillas() {
 		int eleccion;
 		
@@ -17,6 +36,11 @@ public class Usuario extends Jugador {
 		}
 	}
 	
+	/**
+	 * Introduce la combinación secreta del otro jugador dado por parámtero
+	 * @param jugador Jugador al cual se le asignará la combinación introducida
+	 * @see Tablero#setCombinacionSecreta(Combinacion)
+	 */
 	public void introducirCombSecreta(Jugador jugador) {
 		int longitud, eleccion;
 		boolean resultado;
@@ -39,6 +63,12 @@ public class Usuario extends Jugador {
 	}
 	//Metodo para introducir los aciertos
 	
+	/**
+	 * El usuario introducirá las respuestas del otro jugador, al que una vez comprobado que el
+	 * usuario no ha introducido una respuesta incorrecta (para evitar así trampas) se le introducirá la respuesta de su combinación
+	 * @param jugador Jugador al cual se le introducirá las respuestas de su combinación
+	 * @see CombinacionRespuesta#introducirRespuesta(int, int)
+	 */
 	public void introducirRespuesta(Jugador jugador) {
 		int rojos, blancos;
 		boolean resultado = true;
@@ -61,11 +91,9 @@ public class Usuario extends Jugador {
 			
 		}while(!resultado);
 		
-		jugador.getTablero().getCombinacion().setRespuesta(rojos, blancos);
+		jugador.getTablero().getCombinacion().introducirRespuesta(rojos, blancos);
 		
 	}
-	
-	// Metodo para introducir la combinación secreta
 	
 	
 }

@@ -1,5 +1,15 @@
-
+/**
+ * Esta clase genera el modo de juego dependiendo de la elección del usuario
+ * @author Alejandro Sánchez
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class ModoJuego {
+	/**
+	 * Cada modo de juego tiene su dificultad que será generada dependiendo del modo
+	 * @see Dificultad
+	 */
 	private Dificultad dificultad;
 	
 	public ModoJuego(int modo) {
