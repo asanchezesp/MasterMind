@@ -2,24 +2,24 @@ import Teclado.Teclado;
 
 public class Partida {
 	
-	final int FACIL=1, MEDIO=2, DIFICIL=3, SALIR = -1;
+	final int FACIL=1, MEDIO=2, DIFICIL=3;
 	private ModoJuego modo;
-	int opcion1, jugadorModoFacil;
+	int opcion, jugadorModoFacil, contador_dificil=0;
 	private Jugador jugador1, jugador2;
 	
 	
-	public Partida(int opcion1) {
-		this.opcion1 = opcion1;
+	public Partida(int opcion) {
+		this.opcion = opcion;
 	}
 	
 	public void comenzarPartida() {
 		boolean fin_partida = false;
 		String mensaje_fin = "Fin de la partida, el ganador es el jugador ";
 		
-		switch(opcion1) {
+		switch(opcion) {
 			case FACIL:
 				jugadorModoFacil = (Teclado.boolMenu("Elija quien será el jugador", "Usuario", "Máquina")?1:2); //Si es 1 el jugador será el usuario, si no será la máquina
-				modo = new ModoJuego(opcion1); // Inicializa valores para el modo fácil
+				modo = new ModoJuego(opcion); // Inicializa valores para el modo fácil
 				jugador1 = new Usuario(modo);
 				jugador2 = new Maquina(modo);
 			
@@ -88,7 +88,105 @@ public class Partida {
 				break;
 		
 			case MEDIO:
+				modo = new ModoJuego(opcion); // Inicializa valores para el modo medio
+				jugador1 = new Usuario(modo);
+				jugador2 = new Maquina(modo);
+				
+				//1.La máquina introduce la combinación secreta del usuario
+				jugador1.getTablero().setCombinacionSecreta(((Maquina)jugador2).introducirCombSecreta());
+				//2.El usuario introduce la combinación secreta de la máquina
+				Colores.ensenharColores(jugador1.getTablero().getNumColores());
+				System.out.println("Introduzca la combinación secreta para la máquina elegiendo entre los colores disponibles usando los números del 1 al 8:");
+				((Usuario)jugador1).introducirCombSecreta(jugador2);
+				System.out.println("Va a comenzar la partida:\n");
+				
+				for(int i=1; i<=jugador1.getTablero().getIntentos() && !fin_partida ;i++) {
+					//3.Inicializo las combinaciones a introducir
+					jugador1.getTablero().nuevaCombinacion();
+					jugador2.getTablero().nuevaCombinacion();
+					//4.El usuario y la máquina introducen la combinación
+					Colores.ensenharColores(jugador1.getTablero().getNumColores());
+					System.out.println("\n\nIntroduzca la secuencia de colores usando los colores disponibles usando los números del 1 al 8 para tu tablero");
+					((Usuario)jugador1).introducirCasillas();
+					((Maquina)jugador2).introducirCombinacion();
+					//5.El usuario y la máquina colocan las respuestas
+					System.out.println("La combinación de la máquina es:");
+					jugador2.getTablero().getCombinacion().dibujar();
+					((Usuario)jugador1).introducirRespuesta(jugador2);
+					((Maquina)jugador2).introducirRespuestas(jugador1);
+					//6.Añado las combinaciones a sus respectivas listas
+					jugador1.getTablero().colocarCombinacionLista(jugador1.getTablero().getCombinacion());
+					jugador2.getTablero().colocarCombinacionLista(jugador2.getTablero().getCombinacion());
+					//7.Dibujo los tableros
+					System.out.println("Tablero de la máquina: ");
+					jugador2.getTablero().dibujar(i);
+					System.out.println("\nTablero del usuario: ");
+					jugador1.getTablero().dibujar(i);
+					
+					//8.Compruebo las combinaciones
+					if(jugador1.getTablero().compararCombinaciones() ||jugador2.getTablero().compararCombinaciones())
+						fin_partida = true;
+					
+					System.out.println("\n");
+				}
+				
+				if(jugador1.getTablero().compararCombinaciones())
+					System.out.println(mensaje_fin + "1");
+				else 
+					if(jugador2.getTablero().compararCombinaciones())
+						System.out.println(mensaje_fin + "1");
+				else
+					System.out.println("Fin de la partida, el resultado es de empate");
+
+			break;
 			
+			case DIFICIL:
+				modo = new ModoJuego(opcion); // Inicializa valores para el modo medio
+				jugador1 = new Maquina(modo);
+				jugador2 = new Maquina(modo);
+				
+				//Introduzco las combinaciones secretas de las máquinas
+				jugador1.getTablero().setCombinacionSecreta(((Maquina)jugador2).introducirCombSecreta());
+				jugador2.getTablero().setCombinacionSecreta(((Maquina)jugador1).introducirCombSecreta());
+				
+				while(!fin_partida) {
+					contador_dificil++;
+					//1.Inicializo las combinaciones a introducir 
+					jugador1.getTablero().nuevaCombinacion();
+					jugador2.getTablero().nuevaCombinacion();
+					//2.Las máquinas introducen sus combinaciones
+					((Maquina)jugador1).introducirCombinacion();
+					((Maquina)jugador2).introducirCombinacion();
+					//3.Las máquinas introducen la respuesta
+					((Maquina)jugador2).introducirRespuestas(jugador1);
+					((Maquina)jugador1).introducirRespuestas(jugador2);
+					//4.Añado las combinaciones a las listas
+					jugador1.getTablero().colocarCombinacionLista(jugador1.getTablero().getCombinacion());
+					jugador2.getTablero().colocarCombinacionLista(jugador2.getTablero().getCombinacion());
+					//5.Muestro los tableros de las máquinas
+					System.out.println("\nMovimiento nº: " + contador_dificil + "\n-------------------------------------------------------");
+					System.out.println("Tablero de la máquina 1");
+					jugador1.getTablero().dibujar(0);
+					System.out.println("\nTablero de la máquina 2");
+					jugador1.getTablero().dibujar(0);
+					
+					//6.Compruebo las combinaciones
+					if(jugador1.getTablero().compararCombinaciones() ||jugador2.getTablero().compararCombinaciones())
+						fin_partida = true;
+					
+					try{ 
+						Thread.sleep(3000); 
+						} catch(InterruptedException e) {
+							System.out.println();
+						}
+				}
+				
+				if(jugador1.getTablero().compararCombinaciones())
+					System.out.println(mensaje_fin + "1");
+				else 
+					if(jugador2.getTablero().compararCombinaciones())
+						System.out.println(mensaje_fin + "1");
+			break;
 }
 
 }

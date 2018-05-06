@@ -6,9 +6,8 @@ public class Tablero implements Dibujable2{
 	private ArrayList<CombinacionRespuesta> combinaciones_respuestas = new ArrayList<>(); 
 	private int numIntentos, numColores;
 	private boolean repeticion;
-	private CombinacionRespuesta casillas;
 	private Combinacion combSecreta;
-	private Casilla[] celdas;
+	private CombinacionRespuesta casillas;
 	
 	public Tablero(ModoJuego modo) {
 		this.modo = modo;
@@ -19,7 +18,9 @@ public class Tablero implements Dibujable2{
 		return casillas;
 	}
 	
-
+	public ModoJuego getModo() {
+		return modo;
+	}
 	
 	public int getIntentos() {
 		return numIntentos;
@@ -64,7 +65,6 @@ public class Tablero implements Dibujable2{
 	public void setModo(ModoJuego modo) {
 	
 		numIntentos = modo.getDificultad().getNumIntentos();
-		repeticion = modo.getDificultad().isRepeticion();
 		casillas = new CombinacionRespuesta(modo.getDificultad().getNumCasillas());
 		combSecreta = new Combinacion(modo.getDificultad().getNumCasillas());
 		numColores = modo.getDificultad().getNumColores();
@@ -80,7 +80,7 @@ public class Tablero implements Dibujable2{
 			else
 				System.out.print(i+1 + " | ");
 			combinaciones_respuestas.get(i).dibujarRespuesta();
-			if(i==0)
+			if(i==0 && intentos_restantes!=0)
 				System.out.print("Intentos restantes: " + (numIntentos-intentos_restantes) + "\n");
 		}
 	}

@@ -46,8 +46,8 @@ public class Jugador {
 		int i,j;
 		
 		for(i=0; i<casillas.getCeldas().length-1 && !resultado;i++) 
-			for(j=i+1; j<casillas.getCeldas().length-1 && !resultado;j++)
-				if(casillas.getValorCelda(i).equals(casillas.getValorCelda(j)))
+			for(j=0; j<casillas.getCeldas().length-1 && !resultado;j++)
+				if(casillas.getValorCelda(i).equals(casillas.getValorCelda(j)) && i!=j)
 					resultado = true;
 		
 		return resultado;

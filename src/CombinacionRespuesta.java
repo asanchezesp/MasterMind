@@ -10,12 +10,7 @@ public class CombinacionRespuesta extends Combinacion implements Dibujable {
 		respuestas = new String[tamanio];
 		Arrays.fill(respuestas, " ");
 	}
-	
-	/*public void setNumAcertados(int acertados_posicion, int acertados) {
-		this.acertados = acertados;
-		this.acertados_posicion = acertados_posicion;
-		setRespuesta();
-	}*/
+
 	
 	public void setRespuesta(int acertados_posicion, int acertados) {
 		this.acertados = acertados;
