@@ -6,19 +6,19 @@ import org.junit.jupiter.api.Test;
 
 import MasterMind.Colores;
 import MasterMind.Combinacion;
-import MasterMind.CombinacionRespuesta;
 import MasterMind.Jugador;
+import MasterMind.Maquina;
 import MasterMind.ModoJuego;
-import MasterMind.Jugador;
 
 
 @DisplayName("Test de JUnit para probar las respuestas")
 class PruebasMasterMind {
 	
-	ModoJuego modoFacil,modoMedio;
+	ModoJuego modoFacil,modoMedio,modoDificil;
 	
 	Jugador jugadorFacil = new Jugador(modoFacil = new ModoJuego(1));
 	Jugador jugadorMedio = new Jugador(modoMedio = new ModoJuego(2));
+	Maquina jugadorDificil = new Maquina(modoMedio = new ModoJuego(3));
 	
 	//Función para añadirle una combinación secreta para probar
 	Combinacion colocarCombSecreta(int longitud) {
@@ -31,22 +31,12 @@ class PruebasMasterMind {
 		return secreta;
 	}
 	
-	
-	//Pruebas de modo fácil
-	/*void colocarCombinacionFacil() {
-		//La combinación secreta en modo fácil será {"negro","rojo","verde","amarillo"}
-		String combinacion1[] = {"negro","azul","morado","celeste"};
-		String combinacion2[] = {"azul","negro","morado","celeste"};
-		//Introduzco una combianción secreta para añadirle 
-		for(int i=0; i< combinacion1.length;i++)
-			combinacionFacil.colocarCeldas(Colores.elegirColor(combinacion1[i]),i);
-	}*/
-	
 	@Test
-	@DisplayName("Prueba '1 rojo 0 blancos' y '0 rojos 1 blanco' en modo fácil")
+	@DisplayName("Prueba '1 rojo 0 blancos', '0 rojos 1 blanco' y '1 rojo 2 blancos' en modo fácil")
 	void colocarRespuestaFacil() {
 		String combinacion1[] = {"negro","azul","morado","celeste"};
 		String combinacion2[] = {"azul","negro","morado","celeste"};
+		String combinacion3[] = {"negro","verde","rojo","celeste}"};
 		jugadorFacil.getTablero().setCombinacionSecreta(colocarCombSecreta(combinacion1.length));
 		
 		for(int i=0; i< combinacion1.length;i++)
@@ -57,23 +47,51 @@ class PruebasMasterMind {
 			jugadorFacil.getTablero().getCombinacion().colocarCeldas(Colores.elegirColor(combinacion2[i]),i);
 		assertTrue(jugadorFacil.compararAcertados(0, 1)); //Prueba de 0 rojos 1 blanco
 		
+		for(int i=0; i<combinacion1.length;i++)
+			jugadorFacil.getTablero().getCombinacion().colocarCeldas(Colores.elegirColor(combinacion3[i]),i);
+		assertTrue(jugadorFacil.compararAcertados(1, 2)); //Prueba de 1 rojo 2 blancos
 	}
 	
 	@Test
-	@DisplayName("Prueba '4 rojo 0 blancos' y '2 rojos 3 blancos' en modo medio")
+	@DisplayName("Prueba '4 rojos 0 blancos' y '0 rojos 3 blancos' y '2 rojos 2 blancos' en modo medio")
 	void colocarRespuestaMedio() {
 		String combinacion1[] = {"negro","rojo","verde","amarillo","verde claro"};
-		String combinacion2[] = {"negro","verde","amarillo","rojo","azul"};
+		String combinacion2[] = {"morado","verde","amarillo","rojo","celeste"};
+		String combinacion3[] = {"negro","verde","rojo","amarillo","celeste"};
 		jugadorMedio.getTablero().setCombinacionSecreta(colocarCombSecreta(combinacion1.length));
 		
 		for(int i=0; i< combinacion1.length;i++)
 			jugadorMedio.getTablero().getCombinacion().colocarCeldas(Colores.elegirColor(combinacion1[i]),i);
-		assertTrue(jugadorMedio.compararAcertados(4, 0)); // Prueba de 1 rojo 0 blancos
+		assertTrue(jugadorMedio.compararAcertados(4, 0)); // Prueba de 4 rojos 0 blancos
 			
 		for(int i=0; i< combinacion1.length;i++)
 			jugadorMedio.getTablero().getCombinacion().colocarCeldas(Colores.elegirColor(combinacion2[i]),i);
-		assertTrue(jugadorMedio.compararAcertados(2, 3)); //Prueba de 0 rojos 1 blanco
+		assertTrue(jugadorMedio.compararAcertados(0, 3)); //Prueba de 0 rojos 3 blancos
 		
+		for(int i=0; i< combinacion1.length;i++)
+			jugadorMedio.getTablero().getCombinacion().colocarCeldas(Colores.elegirColor(combinacion3[i]),i);
+		assertTrue(jugadorMedio.compararAcertados(2, 2)); //Prueba de 2 rojos 2 blancos
 	}
+	
+	@Test
+	@DisplayName("Prueba '7 rojos 0 blancos' y '0 rojos 7 blancos' en modo medio")
+	void colocarRespuestaDificil() {
+		//"negro","rojo","verde","amarillo","azul","morado","celeste","verde claro","celeste oscuro","turquesa"
+		String combinacion1[] = {"negro","rojo","verde","amarillo","azul","morado","turquesa","verde claro"};
+		String combinacion2[] = {"rojo","negro","amarillo","verde","morado","azul","verde claro","turquesa"};
+		jugadorDificil.getTablero().setCombinacionSecreta(colocarCombSecreta(combinacion1.length));
+		
+		for(int i=0; i< combinacion1.length;i++)
+			jugadorDificil.getTablero().getCombinacion().colocarCeldas(Colores.elegirColor(combinacion1[i]),i);
+		assertTrue(jugadorDificil.compararAcertados(7, 0)); // Prueba de 7 rojos 0 blancos
+			
+		for(int i=0; i< combinacion1.length;i++)
+			jugadorDificil.getTablero().getCombinacion().colocarCeldas(Colores.elegirColor(combinacion2[i]),i);
+		assertTrue(jugadorDificil.compararAcertados(0, 7)); //Prueba de 0 rojos 1 blanco
+
+	}
+	
+	
+	
 
 }
